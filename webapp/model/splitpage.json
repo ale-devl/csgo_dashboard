@@ -1,0 +1,37 @@
+{
+	"selectedKey": "overview",
+	"navigation": [
+		{
+			"title": "Servers",
+			"icon": "sap-icon://laptop",
+			"expanded": true,
+			"key": "overview",
+			"items": [
+				{
+					"title": "Practice",
+					"key": "practice"
+				},
+				{
+					"title": "Second Server",
+					"key": "dynamic"
+				}
+			],
+			"gridItems": [
+				{
+					"title": "foo"
+				},
+				{
+					"title": "bar"
+				}
+			]
+		}
+	],
+	"gridItems": [
+		{
+			"title": "foo"
+		},
+		{
+			"title": "bar"
+		}
+	]
+}

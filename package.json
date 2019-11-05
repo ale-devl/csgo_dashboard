@@ -1,7 +1,7 @@
 {
-  "name": "openui5-sample-app",
+  "name": "csgo-dashboard",
   "version": "0.2.0",
-  "description": "Sample of an OpenUI5 app",
+  "description": "CSGO Dashboard",
   "private": true,
   "scripts": {
     "start": "ui5 serve",
@@ -16,7 +16,9 @@
   },
   "dependencies": {
     "@openui5/sap.m": "^1.71.3",
+    "@openui5/sap.f": "^1.71.3",
     "@openui5/sap.ui.core": "^1.71.3",
+    "@openui5/sap.tnt": "^1.71.3",
     "@openui5/themelib_sap_fiori_3": "^1.71.3"
   },
   "devDependencies": {

@@ -1,52 +1,60 @@
-<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="sap.ui.demo.todo.controller.App" displayBlock="true">
-	<Shell>
-		<App>
-			<Page title="{i18n>TITLE}" backgroundDesign="List">
-				<subHeader>
-					<Toolbar>
-						<SearchField
-							id="searchTodoItemsInput"
-							liveChange=".onSearch"
-							width="100%"/>
-					</Toolbar>
-				</subHeader>
-				<content>
-					<Input class="todoInput" id="addTodoItemInput" value="{/newTodo}" placeholder="{i18n>INPUT_PLACEHOLDER}" change=".addTodo"/>
-					<List id="todoList"
-						items="{ path: '/todos', events: { change: '.updateItemsLeftCount' } }"
-						mode="MultiSelect"
-						growing="true"
-						growingScrollToLoad="true"
-						showNoData="false"
-						showSeparators="None"
-						rememberSelections="false">
-						<infoToolbar>
-							<Toolbar>
-								<Label id="itemsLeftLabel" text="{= ${/itemsLeftCount} === 1 ? ${/itemsLeftCount} + ' ' + ${i18n>ITEM_LEFT} : ${/itemsLeftCount} + ' ' + ${i18n>ITEMS_LEFT} }"/>
-							</Toolbar>
-						</infoToolbar>
-						<CustomListItem class="todoListItem" selected="{completed}">
-							<Input enabled="{=!${completed}}" value="{title}"/>
-						</CustomListItem>
-					</List>
-				</content>
-				<footer>
-					<Bar>
-						<contentMiddle>
-							<SegmentedButton selectedKey="all" selectionChange=".onFilter" class="sapMSegmentedButtonNoAutoWidth">
-								<items>
-									<SegmentedButtonItem id="filterButton-all" text="All" key="all"/>
-									<SegmentedButtonItem id="filterButton-active" text="Active" key="active"/>
-									<SegmentedButtonItem id="filterButton-completed" text="Completed" key="completed"/>
-								</items>
-							</SegmentedButton>
-						</contentMiddle>
-						<contentRight>
-							<Button id="clearCompleted" enabled="{/itemsRemovable}" icon="sap-icon://delete" text="{i18n>CLEAR_COMPLETED}" press=".clearCompleted"/>
-						</contentRight>
-					</Bar>
-				</footer>
-			</Page>
-		</App>
-	</Shell>
+<mvc:View height="100%"
+		xmlns:mvc="sap.ui.core.mvc"
+		xmlns="sap.m"
+		xmlns:f="sap.f"
+		xmlns:tnt="sap.tnt"
+		xmlns:card="sap.f.cards"
+		xmlns:core="sap.ui.core"
+		controllerName="csgo.dashboard.controller.App"
+		displayBlock="true">
+	<tnt:ToolPage id="toolPage">
+		<tnt:header>
+			<f:ShellBar title="Wicked Eagles"
+				secondTitle="Server dashboard"
+				showMenuButton="true"
+				showCopilot="false"
+				showNotifications="false"
+				showSearch="false"
+				homeIcon="./resources/logo_ui5.png"
+				homeIconTooltip="SAPUI5"
+				menuButtonPressed="onMenuButtonPress"
+				showProductSwitcher="false">
+				<f:profile>
+					<f:Avatar initials="WE"/>
+				</f:profile>
+			</f:ShellBar>
+		</tnt:header>
+		<tnt:sideContent>
+			<tnt:SideNavigation expanded="true" selectedKey="{splitpage>/selectedKey}" itemSelect="onItemSelect">
+				<tnt:NavigationList items="{path: 'splitpage>/navigation'}">
+					<tnt:NavigationListItem text="{splitpage>title}" icon="{splitpage>icon}" enabled="{splitpage>enabled}" expanded="{splitpage>expanded}" items="{splitpage>items}" key="{splitpage>key}">
+						<tnt:NavigationListItem text="{splitpage>title}" key="{splitpage>key}" enabled="{splitpage>enabled}">
+						</tnt:NavigationListItem>
+					</tnt:NavigationListItem>
+				</tnt:NavigationList>
+				<tnt:fixedItem>
+					<tnt:NavigationList items="{path: 'splitpage>/fixedNavigation'}">
+						<tnt:NavigationListItem text="{splitpage>title}" icon="{splitpage>icon}">
+						</tnt:NavigationListItem>
+					</tnt:NavigationList>
+				</tnt:fixedItem>
+			</tnt:SideNavigation>
+		</tnt:sideContent>
+		<tnt:mainContents>
+			<NavContainer id="pageContainer" initialPage="overview">
+				<pages>
+					<ScrollContainer id="overview" horizontal="false" vertical="true" height="100%">
+						<core:Fragment fragmentName="csgo.dashboard.fragments.PracticeCard" type="XML"/>
+						<core:Fragment fragmentName="csgo.dashboard.fragments.SecondCard" type="XML"/>
+					</ScrollContainer>
+					<ScrollContainer id="dynamic" horizontal="false" vertical="true" height="100%">
+						<Text text="Some configuration stuff will be here"/>
+					</ScrollContainer>
+					<ScrollContainer id="practice" horizontal="false" vertical="true" height="100%">
+						<Text text="Some configuration stuff will be here"/>
+					</ScrollContainer>
+				</pages>
+			</NavContainer>
+		</tnt:mainContents>
+	</tnt:ToolPage>
 </mvc:View>

@@ -1,0 +1,60 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:f="sap.f" xmlns:card="sap.f.cards" xmlns:core="sap.ui.core">
+    <f:Card class="sapUiMediumMargin" width="300px">
+        <f:header>
+            <card:Header title="Practice Server" subtitle="Our default practice server" iconSrc="sap-icon://laptop" />
+        </f:header>
+        <f:content>
+            <VBox height="115px" class="sapUiSmallMargin" justifyContent="SpaceBetween">
+                <FlexBox alignItems="Start">
+                    <Text text="Status">
+                        <layoutData>
+                            <FlexItemData growFactor="9" />
+                        </layoutData>
+                    </Text>
+                    <Text text="Up">
+                        <layoutData>
+                            <FlexItemData growFactor="0.2" />
+                        </layoutData>
+                    </Text>
+                    <core:Icon src="sap-icon://arrow-top" color="Positive"></core:Icon>
+                </FlexBox>
+                <FlexBox alignItems="Start">
+                    <Text text="Players">
+                        <layoutData>
+                            <FlexItemData growFactor="9" />
+                        </layoutData>
+                    </Text>
+                    <Text text="0/32">
+                        <layoutData>
+                            <FlexItemData growFactor="0.2" />
+                        </layoutData>
+                    </Text>
+                </FlexBox>
+                <FlexBox alignItems="Start">
+                    <Text text="Current map">
+                        <layoutData>
+                            <FlexItemData growFactor="9" />
+                        </layoutData>
+                    </Text>
+                    <Text text="de_mirage">
+                        <layoutData>
+                            <FlexItemData growFactor="0.2" />
+                        </layoutData>
+                    </Text>
+                </FlexBox>
+                <HBox alignItems="Center" class="sapUiSmallMargin">
+                    <Button text="Restart" width="100%">
+                        <layoutData>
+                            <FlexItemData growFactor="1" />
+                        </layoutData>
+                    </Button>
+                    <Button text="Force Update" width="100%">
+                        <layoutData>
+                            <FlexItemData growFactor="1" alignSelf="End" />
+                        </layoutData>
+                    </Button>
+                </HBox>
+            </VBox>
+        </f:content>
+    </f:Card>
+</core:FragmentDefinition>
