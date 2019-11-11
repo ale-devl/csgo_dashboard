@@ -15,23 +15,7 @@
 					"title": "Second Server",
 					"key": "dynamic"
 				}
-			],
-			"gridItems": [
-				{
-					"title": "foo"
-				},
-				{
-					"title": "bar"
-				}
 			]
-		}
-	],
-	"gridItems": [
-		{
-			"title": "foo"
-		},
-		{
-			"title": "bar"
 		}
 	]
 }

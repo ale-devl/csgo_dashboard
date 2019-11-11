@@ -1,5 +1,5 @@
 {
-  "name": "csgo_query",
+  "name": "proxy",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,6 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
-    "gamedig": "^2.0.19"
+    "http-proxy-middleware": "^0.20.0"
   }
 }

@@ -1,0 +1,13 @@
+
+{
+    "routes": [
+      {
+        "route": "/dashboard",
+        "address": "http://localhost:1338"
+      },
+      {
+        "route": "/servers",
+        "address": "http://localhost:1339"
+      }
+    ]
+  }

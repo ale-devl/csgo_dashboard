@@ -11,7 +11,7 @@
                             <FlexItemData growFactor="9" />
                         </layoutData>
                     </Text>
-                    <Text text="Up">
+                    <Text text="{practice>/status}">
                         <layoutData>
                             <FlexItemData growFactor="0.2" />
                         </layoutData>
@@ -24,7 +24,7 @@
                             <FlexItemData growFactor="9" />
                         </layoutData>
                     </Text>
-                    <Text text="0/32">
+                    <Text text="{practice>/playerCount}">
                         <layoutData>
                             <FlexItemData growFactor="0.2" />
                         </layoutData>
@@ -36,7 +36,7 @@
                             <FlexItemData growFactor="9" />
                         </layoutData>
                     </Text>
-                    <Text text="de_mirage">
+                    <Text text="{practice>/map}">
                         <layoutData>
                             <FlexItemData growFactor="0.2" />
                         </layoutData>

@@ -4,7 +4,7 @@
   "description": "CSGO Dashboard",
   "private": true,
   "scripts": {
-    "start": "ui5 serve",
+    "start": "ui5 --port 1338 serve",
     "lint": "eslint webapp",
     "karma": "karma start",
     "karma-ci": "rimraf coverage && karma start karma-ci.conf.js",
@@ -12,7 +12,7 @@
     "test": "npm run lint && npm run karma-ci",
     "build": "ui5 build -a --clean-dest",
     "build-self-contained": "ui5 build self-contained -a --clean-dest",
-    "serve-dist": "ws --compress -d dist"
+    "serve-dist": "ws --compress -p 1338 -d dist"
   },
   "dependencies": {
     "@openui5/sap.m": "^1.71.3",

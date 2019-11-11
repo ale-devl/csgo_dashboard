@@ -7,6 +7,10 @@
 			"splitpage_data": {
 				"uri": "model/splitpage.json",
 				"type": "JSON"
+			},
+			"practiceServer_data": {
+				"uri": "../servers/practice/query",
+				"type": "JSON"
 			}
 		}
 	},
@@ -36,6 +40,10 @@
 			"splitpage": {
 				"type": "sap.ui.model.json.JSONModel",
 				"dataSource": "splitpage_data"
+			},
+			"practice": {
+				"type": "sap.ui.model.json.JSONModel",
+				"dataSource": "practiceServer_data"
 			}
 		},
 		"resources": {
