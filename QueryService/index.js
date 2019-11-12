@@ -1,6 +1,5 @@
-// const Gamedig = require('gamedig');
-// const App = require("express")();
-// const port = 1338;
+"use strict";
+const Gamedig = require('gamedig');
 // Gamedig.query({
 //     type: 'csgo',
 //     host: '185.163.119.91',
@@ -14,7 +13,7 @@
 const app = require("express")();
 const sPort = 1339;
 
-app.get("/practice/query", (req, res) => {
+app.get("/:server/query", (_req, res) => {
     res.json({
         status: "Running",
         playerCount: "0/32",
@@ -22,9 +21,8 @@ app.get("/practice/query", (req, res) => {
     });
 });
 
-
-app.get("/fooserver/query", (req, res) => {
-    res.json({status: "success /"});
+app.get("/fooserver/query", (_req, res) => {
+    res.json({ status: "success /" });
 });
 
 app.listen(sPort, () => {
