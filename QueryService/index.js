@@ -1,28 +1,21 @@
 "use strict";
-const Gamedig = require('gamedig');
-// Gamedig.query({
-//     type: 'csgo',
-//     host: '185.163.119.91',
-//     port: '27015'
-// }).then((state) => {
-//     console.log(state);
-// }).catch((error) => {
-//     console.log("Server is offline");
-// });
-
-const app = require("express")();
+const express = require("express")
+const ServerManager = require("./ServerManager");
+const app = express();
 const sPort = 1339;
 
-app.get("/:server/query", (_req, res) => {
-    res.json({
-        status: "Running",
-        playerCount: "0/32",
-        map: "de_stroyed"
-    });
-});
-
-app.get("/fooserver/query", (_req, res) => {
-    res.json({ status: "success /" });
+app.get("/:server/query", async (req, res) => {
+    let sServer = req.params.server;
+    try {
+        let oServerData = await ServerManager.getData(sServer);
+        res.json(oServerData);
+    } catch (error) {
+        if (error.code === 1) {
+            res.status(504).send(`${sServer} appears to be offline`);
+        } else {
+            res.json(error.message);
+        }
+    }
 });
 
 app.listen(sPort, () => {

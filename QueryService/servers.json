@@ -1,0 +1,9 @@
+{
+    "practice": {
+        "name": "practice",
+        "description": "Our default practice server",
+        "type": "csgo",
+        "host": "localhost",
+        "port": "27015"
+    }
+}
