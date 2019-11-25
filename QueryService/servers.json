@@ -3,7 +3,7 @@
         "name": "practice",
         "description": "Our default practice server",
         "type": "csgo",
-        "host": "localhost",
+        "host": "185.163.119.91",
         "port": "27015"
     }
 }

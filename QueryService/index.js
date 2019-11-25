@@ -1,6 +1,6 @@
 "use strict";
 const express = require("express")
-const ServerManager = require("./ServerManager");
+const ServerManager = process.env.dev === true ? require("./ServerManager") : require("./ServerManagerMock");
 const app = express();
 const sPort = 1339;
 
@@ -20,4 +20,7 @@ app.get("/:server/query", async (req, res) => {
 
 app.listen(sPort, () => {
     console.log(`Listening on port ${sPort}`);
+    if (process.env.dev) {
+        console.log("Dev mode enabled. No real server data will be requested");
+    }
 });

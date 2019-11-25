@@ -4,7 +4,7 @@ const Gamedig = require("gamedig");
 class QueryError extends Error {
     constructor(code, ...params) {
         super(...params);
-        this.code = 1;
+        this.code = code;
     }
 }
 
@@ -19,7 +19,7 @@ async function QueryServer(server) {
         return oServerData;
     } catch (error) {
         if (error.message = "Error: Failed all 10 attempts") {
-            throw new QueryError("Server offline");
+            throw new QueryError(1, "Server offline");
         }
     }
 }
@@ -30,7 +30,7 @@ class ServerManager {
         if (oServer) {
             return await QueryServer(oServer);
         } else {
-            throw new QueryError(`Server not found: ${sServer}`);
+            throw new QueryError(404, `Server not found: ${sServer}`);
         }
     }
 };
