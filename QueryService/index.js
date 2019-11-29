@@ -1,14 +1,16 @@
 "use strict";
-const express = require("express")
-const ServerManager = process.env.dev === true ? require("./ServerManager") : require("./ServerManagerMock");
+const express = require("express");
+const yargs = require("yargs").argv;
+const ServerManager = yargs.dev === "true" ? require("./ServerManagerMock") : require("./ServerManager");
 const app = express();
-const sPort = 1339;
+const sPort = yargs.port || 1338;
 
 app.get("/:server/query", async (req, res) => {
     let sServer = req.params.server;
     try {
-        let oServerData = await ServerManager.getData(sServer);
-        res.json(oServerData);
+        let oRawServerData = await ServerManager.getData(sServer);
+        let oProcessedData = processData(oRawServerData);
+        res.json(oProcessedData);
     } catch (error) {
         if (error.code === 1) {
             res.status(504).send(`${sServer} appears to be offline`);
@@ -19,8 +21,35 @@ app.get("/:server/query", async (req, res) => {
 });
 
 app.listen(sPort, () => {
-    console.log(`Listening on port ${sPort}`);
-    if (process.env.dev) {
-        console.log("Dev mode enabled. No real server data will be requested");
+    console.log(`QueryService: Listening on port ${sPort}`);
+    if (yargs.dev) {
+        console.log("QueryService: Dev mode enabled. No real server data will be requested");
     }
 });
+
+function processData (server) {
+    let oData = {
+        "name": server.metadata.name,
+        "description": server.metadata.description,
+        "map": server.data.map,
+        "players": {
+            "count": server.data.raw.numplayers + server.data.raw.numBots,
+            "max": server.data.maxplayers,
+            "list": [
+                {
+                    "SomePlayer": {
+                        "name": "",
+                        "team": "",
+                        "ping": 0,
+                        "isBot": false,
+                        "isAdmin": true
+                    }
+                }
+            ]
+        },
+        "version": server.data.version,
+        "connect": `steam://connect/${server.data.connect}`,
+        "status": "up"
+    };
+    return oData;
+};

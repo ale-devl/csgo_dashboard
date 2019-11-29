@@ -10,30 +10,34 @@ class QueryError extends Error {
 async function QueryServer(server) {
     return new Promise(resolve => {
         setTimeout(() => {
-            resolve({
-                    "name": "Mocked Server",
-                    "map": "de_mock",
-                    "password": true,
-                    "raw": {
-                        "protocol": 17,
-                        "folder": "csgo",
-                        "game": "Counter-Strike: Global Offensive",
-                        "steamappid": 730,
-                        "numplayers": 0,
-                        "numbots": 0,
-                        "listentype": "d",
-                        "environment": "l",
-                        "secure": 1,
-                        "version": "1.37.2.6",
-                        "tags": "empty,secure",
-                        "gameid": "730",
-                        "rules": {}
-                    },
-                    "maxplayers": 32,
-                    "players": [],
-                    "bots": [],
-                    "connect": "185.163.119.91:27015",
-                    "ping": 6
+            resolve(
+                {
+                    metadata: server,
+                    data: {
+                        "name": "Mocked Server",
+                        "map": "de_mock",
+                        "password": true,
+                        "raw": {
+                            "protocol": 17,
+                            "folder": "csgo",
+                            "game": "Counter-Strike: Global Offensive",
+                            "steamappid": 730,
+                            "numplayers": 0,
+                            "numbots": 0,
+                            "listentype": "d",
+                            "environment": "l",
+                            "secure": 1,
+                            "version": "1.37.2.6",
+                            "tags": "empty,secure",
+                            "gameid": "730",
+                            "rules": {}
+                        },
+                        "maxplayers": 32,
+                        "players": [],
+                        "bots": [],
+                        "connect": "185.163.119.91:27015",
+                        "ping": 6
+                    }
                 });
         }, 2000)}
     );

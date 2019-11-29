@@ -1,12 +1,12 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:f="sap.f" xmlns:card="sap.f.cards" xmlns:core="sap.ui.core">
     <f:Card class="sapUiMediumMargin" width="300px">
         <f:header>
-            <card:Header title="Practice Server" subtitle="Our default practice server" iconSrc="sap-icon://laptop" />
+            <card:Header title="{practice>/name}" subtitle="{practice>/description}" iconSrc="sap-icon://laptop" />
         </f:header>
         <f:content>
             <VBox height="115px" class="sapUiSmallMargin" justifyContent="SpaceBetween">
                 <FlexBox alignItems="Start">
-                    <Text text="Status">
+                    <Text text="{i18n>STATUS}">
                         <layoutData>
                             <FlexItemData growFactor="9" />
                         </layoutData>
@@ -16,10 +16,10 @@
                             <FlexItemData growFactor="0.2" />
                         </layoutData>
                     </Text>
-                    <core:Icon src="sap-icon://arrow-top" color="Positive"></core:Icon>
+                    <core:Icon/>
                 </FlexBox>
                 <FlexBox alignItems="Start">
-                    <Text text="Players">
+                    <Text text="{i18n>PLAYERS}">
                         <layoutData>
                             <FlexItemData growFactor="9" />
                         </layoutData>
@@ -31,7 +31,7 @@
                     </Text>
                 </FlexBox>
                 <FlexBox alignItems="Start">
-                    <Text text="Current map">
+                    <Text text="{i18n>MAP}">
                         <layoutData>
                             <FlexItemData growFactor="9" />
                         </layoutData>
@@ -43,12 +43,12 @@
                     </Text>
                 </FlexBox>
                 <HBox alignItems="Center" class="sapUiSmallMargin">
-                    <Button text="Restart" width="100%">
+                    <Button text="{i18n>RESTART}" width="100%">
                         <layoutData>
                             <FlexItemData growFactor="1" />
                         </layoutData>
                     </Button>
-                    <Button text="Force Update" width="100%">
+                    <Button text="{i18n>UPDATE}" width="100%">
                         <layoutData>
                             <FlexItemData growFactor="1" alignSelf="End" />
                         </layoutData>

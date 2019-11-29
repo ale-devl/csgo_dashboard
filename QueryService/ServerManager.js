@@ -16,7 +16,10 @@ async function QueryServer(server) {
             port: server.port,
             maxAttempts: 10
         });
-        return oServerData;
+        return {
+            metadata: server,
+            data: oServerData
+        };
     } catch (error) {
         if (error.message = "Error: Failed all 10 attempts") {
             throw new QueryError(1, "Server offline");

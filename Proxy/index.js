@@ -1,10 +1,11 @@
 // Dependencies
 const express = require('express');
 const proxy = require('http-proxy-middleware');
+const yargs = require("yargs").argv;
 
 // Config
 const { routes } = require('./routes.json');
-const sPort = "1337";
+const sPort = yargs.port || "1337";
 
 const app = express();
 
@@ -20,5 +21,5 @@ for (route of routes) {
 }
 
 app.listen(sPort, () => {
-    console.log(`Proxy listening on port ${sPort}`);
+    console.log(`Proxy: Listening on port ${sPort}`);
 });

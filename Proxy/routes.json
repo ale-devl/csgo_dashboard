@@ -1,11 +1,11 @@
 {
   "routes": [
     {
-      "route": "/dashboard",
+      "route": "/servers",
       "address": "http://localhost:1338"
     },
     {
-      "route": "/servers",
+      "route": "/dashboard",
       "address": "http://localhost:1339"
     }
   ]

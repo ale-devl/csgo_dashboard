@@ -1,0 +1,19 @@
+{
+  "name": "csgo_dashboard",
+  "version": "1.0.0",
+  "description": "Starts all processes required to run the dashboard",
+  "main": "index.js",
+  "repository": "git@github.com:aletuna/csgo_dashboard.git",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node index.js --dev=true"
+  },
+  "author": "janis.hanser@googlemail.com",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^3.0.0",
+    "child_process": "^1.0.2",
+    "cross-spawn": "^7.0.1",
+    "yargs": "^15.0.2"
+  }
+}
