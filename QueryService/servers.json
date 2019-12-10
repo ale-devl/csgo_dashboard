@@ -4,6 +4,17 @@
         "description": "Our default practice server",
         "type": "csgo",
         "host": "185.163.119.91",
-        "port": "27015"
+        "port": "27015",
+        "LGSMHandlerPort": "30000",
+        "owner": "steam"
+    },
+    "retakes": {
+        "name": "retakes",
+        "description": "Retake server",
+        "type": "csgo",
+        "host": "185.163.119.91",
+        "port": "27016",
+        "LGSMHandlerPort": "30001",
+        "owner": "retakes"
     }
 }

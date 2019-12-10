@@ -36,6 +36,30 @@ class ServerManager {
             throw new QueryError(404, `Server not found: ${sServer}`);
         }
     }
-};
+
+    async restartServer (sServer) {
+        let oServer = servers[sServer];
+        if (oServer) {
+            return await http.get({
+                host: `localhost:${oServer.LGSMHandlerPort}`,
+                path: "/restart"
+            }, response => {
+                return response;
+            });
+        }
+    }
+
+    async forceUpdateServer(sServer) {
+        let oServer = servers[sServer];
+        if (oServer) {
+            return await http.get({
+                host: `localhost:${oServer.LGSMHandlerPort}`,
+                path: "/update"
+            }, response => {
+                return response;
+            });
+        }
+    }
+    };
 
 module.exports = new ServerManager();

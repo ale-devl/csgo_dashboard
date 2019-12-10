@@ -20,6 +20,26 @@ app.get("/:server/query", async (req, res) => {
     }
 });
 
+app.get("/:server/restart", async (req, res) => {
+    let sServer = req.params.server;
+    try {
+        await ServerManager.restart(sServer);
+        res.status(200);
+    } catch (error) {
+        res.status(404);
+    }
+});
+
+app.get("/:server/update", async (req, res) => {
+    let sServer = req.params.server;
+    try {
+        await ServerManager.update(sServer);
+        res.status(200);
+    } catch (error) {
+        res.status(404);
+    }
+});
+
 app.listen(sPort, () => {
     console.log(`QueryService: Listening on port ${sPort}`);
     if (yargs.dev) {
