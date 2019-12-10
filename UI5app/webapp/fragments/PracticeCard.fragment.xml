@@ -16,7 +16,7 @@
                             <FlexItemData growFactor="0.2" />
                         </layoutData>
                     </Text>
-                    <core:Icon/>
+                    <core:Icon src="{ path:'practice>/status', formatter: '.formatIconSrc' }" color="{ path:'practice>/status', formatter: '.formatIconColor' }"/>
                 </FlexBox>
                 <FlexBox alignItems="Start">
                     <Text text="{i18n>PLAYERS}">

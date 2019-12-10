@@ -67,6 +67,7 @@ function processData (server) {
                 }
             ]
         },
+        "playerCount": `${server.data.raw.numplayers + server.data.raw.numbots}/${server.data.maxplayers}`,
         "version": server.data.version,
         "connect": `steam://connect/${server.data.connect}`,
         "status": "up"

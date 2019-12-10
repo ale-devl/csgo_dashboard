@@ -1,6 +1,6 @@
+"use strict";
 const servers = require("./servers.json");
 const Gamedig = require("gamedig");
-
 class QueryError extends Error {
     constructor(code, ...params) {
         super(...params);
@@ -8,7 +8,7 @@ class QueryError extends Error {
     }
 }
 
-async function QueryServer(server) {
+async function queryServer(server) {
     try {
         let oServerData = await Gamedig.query({
             type: server.type,
@@ -31,7 +31,7 @@ class ServerManager {
     async getData (sServer) {
         let oServer = servers[sServer];
         if (oServer) {
-            return await QueryServer(oServer);
+            return await queryServer(oServer);
         } else {
             throw new QueryError(404, `Server not found: ${sServer}`);
         }
@@ -46,6 +46,8 @@ class ServerManager {
             }, response => {
                 return response;
             });
+        } else {
+            return null;
         }
     }
 
@@ -58,6 +60,8 @@ class ServerManager {
             }, response => {
                 return response;
             });
+        } else {
+            return null;
         }
     }
     };

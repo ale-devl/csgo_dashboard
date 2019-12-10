@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
-    "gamedig": "^2.0.19"
+    "gamedig": "^2.0.19",
+    "yargs": "^15.0.2"
   }
 }

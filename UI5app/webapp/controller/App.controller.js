@@ -1,3 +1,4 @@
+"use strict";
 sap.ui.define([
 	'sap/ui/Device',
 	'sap/ui/core/mvc/Controller',
@@ -6,19 +7,35 @@ sap.ui.define([
 	'sap/m/Button',
 	'sap/m/library'
 ], function (Device, Controller, JSONModel, Popover, Button, mobileLibrary) {
-	"use strict";
 
 	return Controller.extend("csgo.dashboard.controller.App", {
 		onItemSelect: function (oEvent) {
-			var item = oEvent.getParameter('item');
+			let item = oEvent.getParameter('item');
 			this.byId("pageContainer").to(this.getView().createId(item.getKey()));
 		},
 
 		onMenuButtonPress: function () {
-			var toolPage = this.byId("toolPage");
+			let toolPage = this.byId("toolPage");
 
 			toolPage.setSideExpanded(!toolPage.getSideExpanded());
+		},
+
+		formatIconSrc: function () {
+			let oModelData = this.oView.getModel("practice").getData();
+			if (oModelData.status === "up") {
+				return "sap-icon://arrow-top";
+			} else {
+				return "sap-icon://arrow-bottom";
+			}
+		},
+
+		formatIconColor: function () {
+			let oModelData = this.oView.getModel("practice").getData();
+			if (oModelData.status === "up") {
+				return "Positive";
+			} else {
+				return "Negative";
+			}
 		}
 	});
-
 });
