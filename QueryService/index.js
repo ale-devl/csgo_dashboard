@@ -5,6 +5,11 @@ const ServerManager = yargs.dev === "true" ? require("./ServerManagerMock") : re
 const app = express();
 const sPort = yargs.port || 1338;
 
+app.get("/servers", async (req, res) => {
+    aServers = ServerManager.getServers();
+    res.json(aServers);
+});
+
 app.get("/:server/query", async (req, res) => {
     let sServer = req.params.server;
     try {

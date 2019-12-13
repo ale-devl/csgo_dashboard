@@ -47,12 +47,14 @@ async function queryServer(server) {
 class ServerManager {
     /**
      * Gets the data from the running instance
-     * 
+     *
      * @param {String} sServer The identifier of the server
      * @throws {QueryError} Exception is thrown if no server is running with the given identifier
      */
     async getData (sServer) {
-        let oServer = servers[sServer];
+        let oServer = servers.find(server => {
+            return server.name === sServer;
+        });
         if (oServer) {
             return await queryServer(oServer);
         } else {
@@ -62,7 +64,7 @@ class ServerManager {
 
     /**
      * Restarts a sever instance
-     * 
+     *
      * @param {String} sServer The identifier of the server
      */
     async restartServer (sServer) {
@@ -73,13 +75,17 @@ class ServerManager {
 
     /**
      * Gracefully updates a server. Note: This CAN fail to fetch the newest version. Not sure why
-     * 
+     *
      * @param {String} sServer The identifier of the server
      */
     async forceUpdateServer (sServer) {
         setTimeout(() => {
             return;
         }, 2000);
+    }
+
+    getServers() {
+        return servers;
     }
 };
 

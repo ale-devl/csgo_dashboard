@@ -29,7 +29,7 @@ async function queryServer(server) {
 
 class ServerManager {
     async getData (sServer) {
-        let oServer = servers[sServer];
+        let oServer = getServerByName(sServer);
         if (oServer) {
             return await queryServer(oServer);
         } else {
@@ -38,7 +38,7 @@ class ServerManager {
     }
 
     async restartServer (sServer) {
-        let oServer = servers[sServer];
+        let oServer = getServerByName(sServer);
         if (oServer) {
             return await http.get({
                 host: `localhost:${oServer.LGSMHandlerPort}`,
@@ -52,7 +52,7 @@ class ServerManager {
     }
 
     async forceUpdateServer(sServer) {
-        let oServer = servers[sServer];
+        let oServer = getServerByName(sServer);
         if (oServer) {
             return await http.get({
                 host: `localhost:${oServer.LGSMHandlerPort}`,
@@ -64,6 +64,16 @@ class ServerManager {
             return null;
         }
     }
-    };
+
+    getServers() {
+        return servers;
+    }
+};
+
+function getServerByName (name) {
+    return servers.find(server => {
+        return server.name === name;
+    });
+}
 
 module.exports = new ServerManager();

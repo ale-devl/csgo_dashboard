@@ -27,8 +27,8 @@ app.get("/update", async (req, res) => {
     res.send(200);
 });
 
-app.listen(sPort, () => {
-    console.log(`LGSMHandler: Listening on port ${sPort}`);
+app.listen(oSettings.port, () => {
+    console.log(`LGSMHandler: Listening on port ${oSettings.port}`);
 });
 
 async function sendCommand (sCommand) {

@@ -43,9 +43,8 @@
 		<tnt:mainContents>
 			<NavContainer id="pageContainer" initialPage="overview">
 				<pages>
-					<ScrollContainer id="overview" horizontal="false" vertical="true" height="100%">
-						<core:Fragment fragmentName="csgo.dashboard.fragments.PracticeCard" type="XML"/>
-						<core:Fragment fragmentName="csgo.dashboard.fragments.SecondCard" type="XML"/>
+					<ScrollContainer id="overview" horizontal="false" vertical="true" height="100%" content="{server>/}">
+						<core:Fragment fragmentName="csgo.dashboard.fragments.ServerCard" type="XML"/>
 					</ScrollContainer>
 					<ScrollContainer id="dynamic" horizontal="false" vertical="true" height="100%">
 						<Text text="Some configuration stuff will be here"/>

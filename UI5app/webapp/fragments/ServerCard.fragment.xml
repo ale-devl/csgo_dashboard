@@ -1,56 +1,56 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:f="sap.f" xmlns:card="sap.f.cards" xmlns:core="sap.ui.core">
-    <f:Card class="sapUiMediumMargin" width="300px">
+    <f:Card id="server_card" class="sapUiMediumMargin" width="250px">
         <f:header>
-            <card:Header title="Second server" subtitle="Whatever this will be" iconSrc="sap-icon://laptop" />
+            <card:Header title="{server>/name}" subtitle="{server>/description}" iconSrc="sap-icon://laptop" />
         </f:header>
         <f:content>
-            <VBox height="115px" class="sapUiSmallMargin" justifyContent="SpaceBetween">
+            <VBox width="100%" class="sapUiSmallMargin">
                 <FlexBox alignItems="Start">
-                    <Text text="Status">
+                    <Text text="{i18n>STATUS}">
                         <layoutData>
                             <FlexItemData growFactor="9" />
                         </layoutData>
                     </Text>
-                    <Text text="Down">
+                    <Text text="{server>/status}">
                         <layoutData>
                             <FlexItemData growFactor="0.2" />
                         </layoutData>
                     </Text>
-                    <core:Icon src="sap-icon://arrow-bottom" color="Negative"></core:Icon>
+                    <core:Icon src="{ path:'server>/status', formatter: '.formatIconSrc' }" color="{ path:'server>/status', formatter: '.formatIconColor' }"/>
                 </FlexBox>
                 <FlexBox alignItems="Start">
-                    <Text text="Players">
+                    <Text text="{i18n>PLAYERS}">
                         <layoutData>
                             <FlexItemData growFactor="9" />
                         </layoutData>
                     </Text>
-                    <Text text="0/32">
-                        <layoutData>
-                            <FlexItemData growFactor="0.2" />
-                        </layoutData>
-                    </Text>
-                </FlexBox>
-                <FlexBox alignItems="Start">
-                    <Text text="Current map">
-                        <layoutData>
-                            <FlexItemData growFactor="9" />
-                        </layoutData>
-                    </Text>
-                    <Text text="null">
+                    <Text text="{server>/playerCount}">
                         <layoutData>
                             <FlexItemData growFactor="0.2" />
                         </layoutData>
                     </Text>
                 </FlexBox>
-                <HBox alignItems="Center" class="sapUiSmallMargin">
-                    <Button text="Start" width="100%">
+                <FlexBox alignItems="Start">
+                    <Text text="{i18n>MAP}">
+                        <layoutData>
+                            <FlexItemData growFactor="9" />
+                        </layoutData>
+                    </Text>
+                    <Text text="{server>/map}">
+                        <layoutData>
+                            <FlexItemData growFactor="0.2" />
+                        </layoutData>
+                    </Text>
+                </FlexBox>
+                <HBox class="sapUiSmallMargin">
+                    <Button text="{i18n>RESTART}" width="97.5%" press="onServerActionButtonPress({'action': 'restart', 'server': 'practice'})">
                         <layoutData>
                             <FlexItemData growFactor="1" />
                         </layoutData>
                     </Button>
-                    <Button text="Force Update" width="100%">
+                    <Button text="{i18n>UPDATE}" width="97.5%" press="onServerActionButtonPress({'action': 'update', 'server': 'practice'})">
                         <layoutData>
-                            <FlexItemData growFactor="1" alignSelf="End" />
+                            <FlexItemData growFactor="1" />
                         </layoutData>
                     </Button>
                 </HBox>
