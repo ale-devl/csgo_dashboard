@@ -27,6 +27,12 @@ async function queryServer(server) {
     }
 }
 
+function getServerByName (name) {
+    return servers.find(server => {
+        return server.name === name;
+    });
+}
+
 class ServerManager {
     async getData (sServer) {
         let oServer = getServerByName(sServer);
@@ -65,15 +71,12 @@ class ServerManager {
         }
     }
 
-    getServers() {
-        return servers;
+    async getServers() {
+        let aPromises = servers.map(server => {
+            return queryServer(server);
+        });
+        return Promise.all(aPromises);
     }
 };
-
-function getServerByName (name) {
-    return servers.find(server => {
-        return server.name === name;
-    });
-}
 
 module.exports = new ServerManager();

@@ -1,7 +1,7 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:f="sap.f" xmlns:card="sap.f.cards" xmlns:core="sap.ui.core">
     <f:Card id="server_card" class="sapUiMediumMargin" width="250px">
         <f:header>
-            <card:Header title="{server>/name}" subtitle="{server>/description}" iconSrc="sap-icon://laptop" />
+            <card:Header title="{server>name}" subtitle="{server>description}" iconSrc="sap-icon://laptop" />
         </f:header>
         <f:content>
             <VBox width="100%" class="sapUiSmallMargin">
@@ -11,12 +11,12 @@
                             <FlexItemData growFactor="9" />
                         </layoutData>
                     </Text>
-                    <Text text="{server>/status}">
+                    <Text text="{server>status}">
                         <layoutData>
                             <FlexItemData growFactor="0.2" />
                         </layoutData>
                     </Text>
-                    <core:Icon src="{ path:'server>/status', formatter: '.formatIconSrc' }" color="{ path:'server>/status', formatter: '.formatIconColor' }"/>
+                    <core:Icon src="{ path:'server>status', formatter: '.formatIconSrc' }" color="{ path:'server>status', formatter: '.formatIconColor' }"/>
                 </FlexBox>
                 <FlexBox alignItems="Start">
                     <Text text="{i18n>PLAYERS}">
@@ -24,7 +24,7 @@
                             <FlexItemData growFactor="9" />
                         </layoutData>
                     </Text>
-                    <Text text="{server>/playerCount}">
+                    <Text text="{server>playerCount}">
                         <layoutData>
                             <FlexItemData growFactor="0.2" />
                         </layoutData>
@@ -36,19 +36,19 @@
                             <FlexItemData growFactor="9" />
                         </layoutData>
                     </Text>
-                    <Text text="{server>/map}">
+                    <Text text="{server>map}">
                         <layoutData>
                             <FlexItemData growFactor="0.2" />
                         </layoutData>
                     </Text>
                 </FlexBox>
                 <HBox class="sapUiSmallMargin">
-                    <Button text="{i18n>RESTART}" width="97.5%" press="onServerActionButtonPress({'action': 'restart', 'server': 'practice'})">
+                    <Button text="{i18n>RESTART}" width="97.5%" press=".onServerActionButtonPress({'action': 'restart'}, $event)">
                         <layoutData>
                             <FlexItemData growFactor="1" />
                         </layoutData>
                     </Button>
-                    <Button text="{i18n>UPDATE}" width="97.5%" press="onServerActionButtonPress({'action': 'update', 'server': 'practice'})">
+                    <Button text="{i18n>UPDATE}" width="97.5%" press=".onServerActionButtonPress({'action': 'update'}, $event)">
                         <layoutData>
                             <FlexItemData growFactor="1" />
                         </layoutData>

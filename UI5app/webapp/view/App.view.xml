@@ -43,7 +43,7 @@
 		<tnt:mainContents>
 			<NavContainer id="pageContainer" initialPage="overview">
 				<pages>
-					<ScrollContainer id="overview" horizontal="false" vertical="true" height="100%" content="{server>/}">
+					<ScrollContainer id="overview" horizontal="false" vertical="true" height="100%" content="{path: 'server>/', templateShareable:true}">
 						<core:Fragment fragmentName="csgo.dashboard.fragments.ServerCard" type="XML"/>
 					</ScrollContainer>
 					<ScrollContainer id="dynamic" horizontal="false" vertical="true" height="100%">

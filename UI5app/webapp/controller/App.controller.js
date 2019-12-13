@@ -13,17 +13,6 @@ sap.ui.define([
                 retakes: `${dataSources.server_data.uri}/retakes`
             };
 			this.dataRefreshIntervals = {};
-
-            this.setupServerDataInterval("practice", {
-                model: this.practiceModel,
-                uri: this.dataSources.practice,
-                time: 60000
-            });
-            this.setupServerDataInterval("retakes", {
-                model: this.retakesModel,
-                uri: this.dataSources.retakes,
-                time: 60000
-            });
         },
 
         setupServerDataInterval: function (server, settings) {
@@ -48,46 +37,51 @@ sap.ui.define([
             toolPage.setSideExpanded(!toolPage.getSideExpanded());
         },
 
-        formatIconSrc: function () {
-            let oModelData = this.oView.getModel("practice").getData();
-            if (oModelData.status === "up") {
+        formatIconSrc: function (status) {
+            if (status === "up") {
                 return "sap-icon://arrow-top";
             } else {
                 return "sap-icon://arrow-bottom";
             }
         },
 
-        formatIconColor: function () {
-            let oModelData = this.oView.getModel("practice").getData();
-            if (oModelData.status === "up") {
+        formatIconColor: function (status) {
+            if (status === "up") {
                 return "Positive";
             } else {
                 return "Negative";
             }
         },
 
-        onServerActionButtonPress: function (oAction) {
+        onServerActionButtonPress: function (oAction, oEvent) {
+			let oServerData = oEvent.getSource().getBindingContext("server").getObject();
             switch (oAction.action) {
                 case "update":
-                    this.updateServer(oAction.server)
+                    this.updateServer(oServerData.id)
                     break;
                 case "restart":
-                    this.restartServer(oAction.server);
+                    this.restartServer(oServerData.id);
                     break;
                 default:
                     return;
             }
         },
 
-        restartServer: function (oServer) {
-
-        },
-
-        updateServer: function (oServer) {
+        restartServer: function (id) {
 			MessageBox.confirm("Are you sure you want to update the server? Note that this will cause some downtime even if no updates are available", {
 				title: "Confirm update",
 				onClose: async () => {
-					const response = await fetch(`${this.dataSources.practice}/update`);
+					await fetch(`${this.dataSources.server}/restart`);
+				}
+			});
+        },
+
+        updateServer: function (id) {
+
+			MessageBox.confirm("Are you sure you want to update the server? Note that this will cause some downtime even if no updates are available", {
+				title: "Confirm update",
+				onClose: async () => {
+					await fetch(`${this.dataSources.server}/update`);
 				}
 			});
         }

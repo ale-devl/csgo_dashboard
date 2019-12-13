@@ -84,8 +84,11 @@ class ServerManager {
         }, 2000);
     }
 
-    getServers() {
-        return servers;
+    async getServers() {
+        let aPromises = servers.map(server => {
+            return queryServer(server);
+        });
+        return Promise.all(aPromises);
     }
 };
 

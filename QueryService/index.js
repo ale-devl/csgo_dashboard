@@ -6,7 +6,10 @@ const app = express();
 const sPort = yargs.port || 1338;
 
 app.get("/servers", async (req, res) => {
-    aServers = ServerManager.getServers();
+    let aServers = await ServerManager.getServers();
+    aServers = aServers.map(server => {
+        return processData(server);
+    });
     res.json(aServers);
 });
 
@@ -54,6 +57,7 @@ app.listen(sPort, () => {
 
 function processData (server) {
     let oData = {
+        "id": server.metadata.id,
         "name": server.metadata.name,
         "description": server.metadata.description,
         "map": server.data.map,
