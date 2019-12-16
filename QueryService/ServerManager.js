@@ -73,9 +73,11 @@ class ServerManager {
 
     async getServers() {
         let aServers = [];
-        servers.forEach(server => {
-            let oServerData = await queryServer(server);
-        });
+
+        for (const server of servers) {
+            const oServerData = await queryServer(server);
+            aServers.push(oServerData);
+        }
         
         return aServers;
     }
