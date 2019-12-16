@@ -9,10 +9,10 @@ sap.ui.define([
         onInit: function () {
             let dataSources = this.getOwnerComponent().getManifestEntry("sap.app").dataSources;
             this.dataSources = {
-                practice: `${dataSources.server_data.uri}/practice`,
-                retakes: `${dataSources.server_data.uri}/retakes`
+                practice: `${dataSources.server_root.uri}/practice`,
+                retakes: `${dataSources.server_root.uri}/retakes`
             };
-			this.dataRefreshIntervals = {};
+            this.dataRefreshIntervals = {};
         },
 
         setupServerDataInterval: function (server, settings) {
@@ -54,36 +54,37 @@ sap.ui.define([
         },
 
         onServerActionButtonPress: function (oAction, oEvent) {
-			let oServerData = oEvent.getSource().getBindingContext("server").getObject();
+            let oServerData = oEvent.getSource().getBindingContext("server").getObject(),
+                oCard = oEvent.getSource().getParent().getParent().getParent();
+
             switch (oAction.action) {
                 case "update":
-                    this.updateServer(oServerData.id)
+                    this.updateServer(oServerData.id, oCard)
                     break;
                 case "restart":
-                    this.restartServer(oServerData.id);
+                    this.restartServer(oServerData.id, oCard);
                     break;
                 default:
                     return;
             }
         },
 
-        restartServer: function (id) {
-			MessageBox.confirm("Are you sure you want to update the server? Note that this will cause some downtime even if no updates are available", {
-				title: "Confirm update",
-				onClose: async () => {
-					await fetch(`${this.dataSources.server}/restart`);
-				}
-			});
+        restartServer: async function (id, card) {
+            card.setBusy(true);
+            await fetch(`${this.dataSources[id]}/restart`);
+            card.setBusy(false);
+            return;
         },
 
-        updateServer: function (id) {
-
-			MessageBox.confirm("Are you sure you want to update the server? Note that this will cause some downtime even if no updates are available", {
-				title: "Confirm update",
-				onClose: async () => {
-					await fetch(`${this.dataSources.server}/update`);
-				}
-			});
+        updateServer: function (id, card) {
+            MessageBox.confirm("Are you sure you want to update the server? Note that this will cause some downtime even if no updates are available", {
+                title: "Confirm update",
+                onClose: async () => {
+                    card.setBusy(true);
+                    await fetch(`${this.dataSources[id]}/update`);
+                    card.setBusy(false);
+                }
+            });
         }
     });
 });

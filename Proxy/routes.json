@@ -2,7 +2,7 @@
   "routes": [
     {
       "route": "/servers",
-      "address": "http://localhost:1338/servers"
+      "address": "http://localhost:1338"
     },
     {
       "route": "/dashboard",

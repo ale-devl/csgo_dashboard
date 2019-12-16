@@ -27,15 +27,15 @@ async function queryServer(server) {
     }
 }
 
-function getServerByName (name) {
+function getServerById (name) {
     return servers.find(server => {
-        return server.name === name;
+        return server.id === name;
     });
 }
 
 class ServerManager {
     async getData (sServer) {
-        let oServer = getServerByName(sServer);
+        let oServer = getServerById(sServer);
         if (oServer) {
             return await queryServer(oServer);
         } else {
@@ -44,7 +44,7 @@ class ServerManager {
     }
 
     async restartServer (sServer) {
-        let oServer = getServerByName(sServer);
+        let oServer = getServerById(sServer);
         if (oServer) {
             return await http.get({
                 host: `localhost:${oServer.LGSMHandlerPort}`,
@@ -57,8 +57,8 @@ class ServerManager {
         }
     }
 
-    async forceUpdateServer(sServer) {
-        let oServer = getServerByName(sServer);
+    async updateServer(sServer) {
+        let oServer = getServerById(sServer);
         if (oServer) {
             return await http.get({
                 host: `localhost:${oServer.LGSMHandlerPort}`,

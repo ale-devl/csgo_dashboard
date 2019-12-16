@@ -8,8 +8,12 @@
 				"uri": "model/splitpage.json",
 				"type": "JSON"
 			},
-			"server_data": {
+			"server_root": {
 				"uri": "../servers",
+				"type": "JSON"
+			},
+			"server_data": {
+				"uri": "../servers/all",
 				"type": "JSON"
 			}
 		}

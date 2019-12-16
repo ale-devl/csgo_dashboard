@@ -5,7 +5,7 @@ const ServerManager = yargs.dev === "true" ? require("./ServerManagerMock") : re
 const app = express();
 const sPort = yargs.port || 1338;
 
-app.get("/servers", async (req, res) => {
+app.get("/all", async (req, res) => {
     let aServers = await ServerManager.getServers();
     aServers = aServers.map(server => {
         return processData(server);
@@ -31,20 +31,21 @@ app.get("/:server/query", async (req, res) => {
 app.get("/:server/restart", async (req, res) => {
     let sServer = req.params.server;
     try {
-        await ServerManager.restart(sServer);
-        res.status(200);
+        console.log("Restarting");
+        await ServerManager.restartServer(sServer);
+        res.status(200).send();
     } catch (error) {
-        res.status(404);
+        res.status(404).send();
     }
 });
 
 app.get("/:server/update", async (req, res) => {
     let sServer = req.params.server;
     try {
-        await ServerManager.update(sServer);
-        res.status(200);
+        await ServerManager.updateServer(sServer);
+        res.status(200).send();
     } catch (error) {
-        res.status(404);
+        res.status(404).send();
     }
 });
 

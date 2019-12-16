@@ -53,7 +53,7 @@ class ServerManager {
      */
     async getData (sServer) {
         let oServer = servers.find(server => {
-            return server.name === sServer;
+            return server.id === sServer;
         });
         if (oServer) {
             return await queryServer(oServer);
@@ -67,10 +67,11 @@ class ServerManager {
      *
      * @param {String} sServer The identifier of the server
      */
-    async restartServer (sServer) {
-        setTimeout(() => {
-            return;
-        }, 2000);
+    restartServer (sServer) {
+        console.log(`Restart for: ${sServer}`);
+        return new Promise(resolve => {
+            setTimeout(resolve, 2000);
+        });
     }
 
     /**
@@ -78,10 +79,11 @@ class ServerManager {
      *
      * @param {String} sServer The identifier of the server
      */
-    async forceUpdateServer (sServer) {
-        setTimeout(() => {
-            return;
-        }, 2000);
+    async updateServer (sServer) {      
+        console.log(`Update for: ${sServer}`);
+        return new Promise(resolve => {
+            setTimeout(resolve, 2000);
+        });
     }
 
     async getServers() {
