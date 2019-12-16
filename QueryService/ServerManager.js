@@ -48,7 +48,7 @@ class ServerManager {
     async restartServer (sServer) {
         let oServer = getServerById(sServer);
         if (oServer) {
-            return await fetch(`localhost:${oServer.LGSMHandlerPort}/restart`);
+            return await fetch(`http://localhost:${oServer.LGSMHandlerPort}/restart`);
         } else {
             return null;
         }
@@ -57,7 +57,7 @@ class ServerManager {
     async updateServer(sServer) {
         let oServer = getServerById(sServer);
         if (oServer) {
-            return await fetch(`localhost:${oServer.LGSMHandlerPort}/update`);
+            return await fetch(`http://localhost:${oServer.LGSMHandlerPort}/update`);
         } else {
             return null;
         }
