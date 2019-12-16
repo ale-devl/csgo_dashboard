@@ -72,10 +72,12 @@ class ServerManager {
     }
 
     async getServers() {
-        let aPromises = servers.map(server => {
-            return queryServer(server);
+        let aServers = [];
+        servers.forEach(server => {
+            let oServerData = await queryServer(server);
         });
-        return Promise.all(aPromises);
+        
+        return aServers;
     }
 };
 
