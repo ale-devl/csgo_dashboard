@@ -1,6 +1,8 @@
 "use strict";
 const servers = require("./servers.json");
 const Gamedig = require("gamedig");
+const fetch = require("node-fetch");
+
 class QueryError extends Error {
     constructor(code, ...params) {
         super(...params);
