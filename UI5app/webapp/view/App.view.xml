@@ -9,7 +9,7 @@
 		displayBlock="true">
 	<tnt:ToolPage id="toolPage">
 		<tnt:header>
-			<f:ShellBar title="Wicked Eagles"
+			<f:ShellBar title="ale's"
 				secondTitle="Server dashboard"
 				showMenuButton="true"
 				showCopilot="false"
