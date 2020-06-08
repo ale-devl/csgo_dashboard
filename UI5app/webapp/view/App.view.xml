@@ -20,7 +20,7 @@
 				menuButtonPressed="onMenuButtonPress"
 				showProductSwitcher="false">
 				<f:profile>
-					<f:Avatar initials="WE"/>
+					<f:Avatar initials="ale"/>
 				</f:profile>
 			</f:ShellBar>
 		</tnt:header>
