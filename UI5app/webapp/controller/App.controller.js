@@ -53,6 +53,12 @@ sap.ui.define([
             }
         },
 
+        formatMapName: function (mapName) {
+            var aMapParts = mapName.split("/");
+
+            return aMapParts[aMapParts.length - 1];
+        },
+
         onServerActionButtonPress: function (oAction, oEvent) {
             let oServerData = oEvent.getSource().getBindingContext("server").getObject(),
                 oCard = oEvent.getSource().getParent().getParent().getParent();

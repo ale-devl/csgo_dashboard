@@ -36,7 +36,7 @@
                             <FlexItemData growFactor="9" />
                         </layoutData>
                     </Text>
-                    <Text text="{server>map}">
+                    <Text text="{ path: 'server>map', formatter: '.formatMapName' }">
                         <layoutData>
                             <FlexItemData growFactor="0.2" />
                         </layoutData>
