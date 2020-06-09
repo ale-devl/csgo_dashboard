@@ -16,5 +16,14 @@
         "host": "185.163.119.91",
         "port": "27016",
         "LGSMHandlerPort": "30001"
+    },
+    {
+        "id": "oneonone",
+        "name": "1v1",
+        "description": "One versus One server",
+        "type": "csgo",
+        "host": "185.163.119.91",
+        "port": "27017",
+        "LGSMHandlerPort": "30002"
     }
 ]

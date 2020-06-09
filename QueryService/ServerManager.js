@@ -70,7 +70,7 @@ class ServerManager {
             const oServerData = await queryServer(server);
             aServers.push(oServerData);
         }
-        
+
         return aServers;
     }
 };
