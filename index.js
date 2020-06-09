@@ -44,7 +44,14 @@ for (let [sModule, oValue] of Object.entries(Modules)) {
                 args.push(`--port ${oValue.port}`);
             }
             args.push(oValue.port);
-            spawn("yarn", args, {cwd: oValue.path, stdio: "inherit"});
+            spawn("yarn", args, {
+                cwd: oValue.path,
+                stdio: "inherit",
+                env: {
+                    NODE_ENV: process.env.NODE_ENV,
+                    PATH: process.env.PATH
+                }
+            });
             break;
     }
 }

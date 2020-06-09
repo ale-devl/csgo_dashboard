@@ -19,7 +19,8 @@
     "@openui5/sap.f": "^1.71.3",
     "@openui5/sap.ui.core": "^1.71.3",
     "@openui5/sap.tnt": "^1.71.3",
-    "@openui5/themelib_sap_fiori_3": "^1.71.3"
+    "@openui5/themelib_sap_fiori_3": "^1.71.3",
+    "@ui5/cli": "^1.11.1"
   },
   "devDependencies": {
     "@ui5/cli": "^1.11.1",
