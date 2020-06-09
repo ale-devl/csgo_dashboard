@@ -10,7 +10,8 @@ sap.ui.define([
             let dataSources = this.getOwnerComponent().getManifestEntry("sap.app").dataSources;
             this.dataSources = {
                 practice: `${dataSources.server_root.uri}/practice`,
-                retakes: `${dataSources.server_root.uri}/retakes`
+                retakes: `${dataSources.server_root.uri}/retakes`,
+                oneonone: `${dataSources.server_root.uri}/oneonone`
             };
             this.dataRefreshIntervals = {};
         },
