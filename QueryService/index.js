@@ -31,7 +31,7 @@ app.get("/:server/query", async (req, res) => {
 app.get("/:server/restart", async (req, res) => {
     let sServer = req.params.server;
     try {
-        console.log("Restarting");
+        console.log(`Restarting ${sServer}`);
         await ServerManager.restartServer(sServer);
         res.status(200).send();
     } catch (error) {
@@ -41,6 +41,7 @@ app.get("/:server/restart", async (req, res) => {
 
 app.get("/:server/update", async (req, res) => {
     let sServer = req.params.server;
+    console.log(`Updating ${sServer}`);
     try {
         await ServerManager.updateServer(sServer);
         res.status(200).send();
