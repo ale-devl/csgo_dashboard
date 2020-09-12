@@ -13,7 +13,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "gamedig": "^2.0.19",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.1",
     "yargs": "^15.0.2"
   }
 }
